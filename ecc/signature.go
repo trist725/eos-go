@@ -79,13 +79,8 @@ func NewSignatureFromData(data []byte) (Signature, error) {
 	return signature, signature.Validate()
 }
 
-func MustNewSignatureFromData(data []byte) Signature {
-	sig, err := NewSignatureFromData(data)
-	if err != nil {
-		panic(err.Error())
-	}
-
-	return sig
+func MustNewSignatureFromData(data []byte) (Signature, error) {
+	return NewSignatureFromData(data)
 }
 
 func MustNewSignature(fromText string) (Signature, error) {
