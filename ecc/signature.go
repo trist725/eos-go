@@ -166,13 +166,8 @@ func NewAMASignatureFromData(data []byte) (Signature, error) {
 	return signature, signature.Validate()
 }
 
-func MustNewAMASignature(fromText string) Signature {
-	signature, err := NewAMASignature(fromText)
-	if err != nil {
-		panic(fmt.Errorf("invalid signature string: %w", err))
-	}
-
-	return signature
+func MustNewAMASignature(fromText string) (Signature, error) {
+	return NewAMASignature(fromText)
 }
 
 func NewAMASignature(signature string) (out Signature, err error) {
